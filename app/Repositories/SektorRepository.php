@@ -2,22 +2,22 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\JabatanInterface;
-use App\Models\JabatanModel;
+use App\Interfaces\SektorInterface;
+use App\Models\SektorModel;
 use Carbon\Carbon;
 
-class JabatanRepository implements JabatanInterface
+class SektorRepository implements SektorInterface
 {
-  private JabatanModel $jabatanModel;
-  public function __construct(JabatanModel $jabatanModel)
+  private SektorModel $sektorModel;
+  public function __construct(SektorModel $sektorModel)
   {
-    $this->jabatanModel = $jabatanModel;
+    $this->sektorModel = $sektorModel;
   }
 
   public function getAllPayload(array $meta)
   {
     try {
-      $data = $this->jabatanModel->all();
+      $data = $this->sektorModel->all();
       
       $payloadList = array(
         "message" => "Berhasil mengambil data",
@@ -52,7 +52,7 @@ class JabatanRepository implements JabatanInterface
 
         $payload['updated_at'] = $date;
 
-        $data    = $this->jabatanModel->whereId($id)->update($payload);
+        $data    = $this->sektorModel->whereId($id)->update($payload);
         $message = "Data berhasil perbaharui" ;
 
       } else {
@@ -60,7 +60,7 @@ class JabatanRepository implements JabatanInterface
         $payload['created_at'] = $date;
         $payload['updated_at'] = $date;
 
-        $data    = $this->jabatanModel->create($payload);
+        $data    = $this->sektorModel->create($payload);
         $message = "Data berhasil dibuat" ;
 
       }
@@ -87,7 +87,7 @@ class JabatanRepository implements JabatanInterface
   public function getPayloadById($id)
   {
     try {
-      $data = $this->jabatanModel->whereId($id)->first();
+      $data = $this->sektorModel->whereId($id)->first();
 
       if (!$data) {
         $message = "Data tidak ditemukan";
@@ -121,7 +121,7 @@ class JabatanRepository implements JabatanInterface
   public function deletePayload($id)
   {
     try {
-      $data = $this->jabatanModel->whereId($id);
+      $data = $this->sektorModel->whereId($id);
 
       if (!$data->first()) {
         $message = "Data tidak ditemukan";

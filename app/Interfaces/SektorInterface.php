@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface JabatanInterface
+interface SektorInterface
 {
   public function getAllPayload(array $meta);
   public function upsertPayload($id, array $payload);

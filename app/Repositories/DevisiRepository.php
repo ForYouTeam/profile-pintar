@@ -128,7 +128,7 @@ class DevisiRepository implements DevisiInterface
         $code    = 404                   ;
         $icon    = 'info'                ;
       } else {
-        $message = "Data berhasil ditemukan";
+        $message = "Data berhasil dihapus";
         $code    = 200                      ;
         $icon    = 'success'                ;
       }
