@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DevisiRequest;
 use App\Interfaces\DevisiInterface;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class DevisiController extends Controller
         return response()->json($data, $data['code']);
     }
 
-    public function upsertData(Request $request)
+    public function upsertData(DevisiRequest $request)
     {
         $id = $request->id | null;
 

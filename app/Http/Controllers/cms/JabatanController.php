@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\cms;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\JabatanRequest;
 use App\Interfaces\JabatanInterface;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class JabatanController extends Controller
         return response()->json($data, $data['code']);
     }
 
-    public function upsertData(Request $request)
+    public function upsertData(JabatanRequest $request)
     {
         $id = $request->id | null;
 
