@@ -17,7 +17,7 @@ class JabatanRepository implements JabatanInterface
   public function getAllPayload(array $meta)
   {
     try {
-      $data = $this->jabatanModel->all();
+      $data = $this->jabatanModel->orderBy('created_at', 'desc')->get();
       
       $payloadList = array(
         "message" => "Berhasil mengambil data",
@@ -87,7 +87,7 @@ class JabatanRepository implements JabatanInterface
   public function getPayloadById($id)
   {
     try {
-      $data = $this->jabatanModel->whereId($id)->first();
+      $data = $this->jabatanModel->whereId($id)->orderBy('created_at', 'desc')->first();
 
       if (!$data) {
         $message = "Data tidak ditemukan";

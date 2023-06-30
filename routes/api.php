@@ -3,6 +3,7 @@
 use App\Http\Controllers\cms\DevisiController;
 use App\Http\Controllers\cms\GaleriController;
 use App\Http\Controllers\cms\JabatanController;
+use App\Http\Controllers\cms\PostinganController;
 use App\Http\Controllers\cms\ProfileController;
 use App\Http\Controllers\cms\SektorController;
 use Illuminate\Http\Request;
@@ -41,6 +42,14 @@ Route::prefix('v2/profile')->controller(ProfileController::class)->group(functio
 });
 
 Route::prefix('v2/galeri')->controller(GaleriController::class)->group(function()
+{
+    Route::get   ('/'    , 'getAllData' );
+    Route::post  ('/'    , 'upsertData' );
+    Route::get   ('/{id}', 'getDataById');
+    Route::delete('/{id}', 'deleteData' );
+});
+
+Route::prefix('v2/postingan')->controller(PostinganController::class)->group(function()
 {
     Route::get   ('/'    , 'getAllData' );
     Route::post  ('/'    , 'upsertData' );

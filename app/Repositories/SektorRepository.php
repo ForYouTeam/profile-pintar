@@ -17,7 +17,7 @@ class SektorRepository implements SektorInterface
   public function getAllPayload(array $meta)
   {
     try {
-      $data = $this->sektorModel->all();
+      $data = $this->sektorModel->orderBy('created_at', 'desc')->get();
       
       $payloadList = array(
         "message" => "Berhasil mengambil data",
@@ -87,7 +87,7 @@ class SektorRepository implements SektorInterface
   public function getPayloadById($id)
   {
     try {
-      $data = $this->sektorModel->whereId($id)->first();
+      $data = $this->sektorModel->whereId($id)->orderBy('created_at', 'desc')->first();
 
       if (!$data) {
         $message = "Data tidak ditemukan";

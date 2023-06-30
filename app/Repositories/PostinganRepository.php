@@ -2,22 +2,22 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\DevisiInterface;
-use App\Models\DevisiModel;
+use App\Interfaces\PostinganInterface;
+use App\Models\PostinganModel;
 use Carbon\Carbon;
 
-class DevisiRepository implements DevisiInterface
+class PostinganRepository implements PostinganInterface
 {
-  private DevisiModel $devisiModel;
-  public function __construct(DevisiModel $devisiModel)
+  private PostinganModel $postinganModel;
+  public function __construct(PostinganModel $postinganModel)
   {
-    $this->devisiModel = $devisiModel;
+    $this->postinganModel = $postinganModel;
   }
 
   public function getAllPayload(array $meta)
   {
     try {
-      $data = $this->devisiModel->orderBy('created_at', 'desc')->get();
+      $data = $this->postinganModel->joinList()->orderBy('postingan.created_at', 'desc')->get();
       
       $payloadList = array(
         "message" => "Berhasil mengambil data",
@@ -52,7 +52,7 @@ class DevisiRepository implements DevisiInterface
 
         $payload['updated_at'] = $date;
 
-        $data    = $this->devisiModel->whereId($id)->update($payload);
+        $data    = $this->postinganModel->whereId($id)->update($payload);
         $message = "Data berhasil perbaharui" ;
 
       } else {
@@ -60,7 +60,7 @@ class DevisiRepository implements DevisiInterface
         $payload['created_at'] = $date;
         $payload['updated_at'] = $date;
 
-        $data    = $this->devisiModel->create($payload);
+        $data    = $this->postinganModel->create($payload);
         $message = "Data berhasil dibuat" ;
 
       }
@@ -87,7 +87,7 @@ class DevisiRepository implements DevisiInterface
   public function getPayloadById($id)
   {
     try {
-      $data = $this->devisiModel->whereId($id)->orderBy('created_at', 'desc')->first();
+      $data = $this->postinganModel->where('postingan.id', $id)->joinList()->orderBy('postingan.created_at', 'desc')->first();
 
       if (!$data) {
         $message = "Data tidak ditemukan";
@@ -121,7 +121,7 @@ class DevisiRepository implements DevisiInterface
   public function deletePayload($id)
   {
     try {
-      $data = $this->devisiModel->whereId($id);
+      $data = $this->postinganModel->whereId($id);
 
       if (!$data->first()) {
         $message = "Data tidak ditemukan";

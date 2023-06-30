@@ -17,7 +17,7 @@ class ProfileRepository implements ProfileInterface
   public function getAllPayload(array $meta)
   {
     try {
-      $data = $this->profileModel->all();
+      $data = $this->profileModel->orderBy('created_at', 'desc')->get();
       
       $payloadList = array(
         "message" => "Berhasil mengambil data",
@@ -87,7 +87,7 @@ class ProfileRepository implements ProfileInterface
   public function getPayloadById($id)
   {
     try {
-      $data = $this->profileModel->whereId($id)->first();
+      $data = $this->profileModel->whereId($id)->orderBy('created_at', 'desc')->first();
 
       if (!$data) {
         $message = "Data tidak ditemukan";

@@ -17,7 +17,7 @@ class GaleriRepository implements GaleriInterface
   public function getAllPayload(array $meta)
   {
     try {
-      $data = $this->galeriModel->all();
+      $data = $this->galeriModel->orderBy('created_at', 'desc')->get();
       
       $payloadList = array(
         "message" => "Berhasil mengambil data",
@@ -87,7 +87,7 @@ class GaleriRepository implements GaleriInterface
   public function getPayloadById($id)
   {
     try {
-      $data = $this->galeriModel->whereId($id)->first();
+      $data = $this->galeriModel->whereId($id)->orderBy('created_at', 'desc')->first();
 
       if (!$data) {
         $message = "Data tidak ditemukan";
