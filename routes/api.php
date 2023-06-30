@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\cms\DevisiController;
+use App\Http\Controllers\cms\GaleriController;
 use App\Http\Controllers\cms\JabatanController;
 use App\Http\Controllers\cms\ProfileController;
 use App\Http\Controllers\cms\SektorController;
@@ -32,6 +33,14 @@ Route::prefix('v2/sektor')->controller(SektorController::class)->group(function(
 });
 
 Route::prefix('v2/profile')->controller(ProfileController::class)->group(function()
+{
+    Route::get   ('/'    , 'getAllData' );
+    Route::post  ('/'    , 'upsertData' );
+    Route::get   ('/{id}', 'getDataById');
+    Route::delete('/{id}', 'deleteData' );
+});
+
+Route::prefix('v2/galeri')->controller(GaleriController::class)->group(function()
 {
     Route::get   ('/'    , 'getAllData' );
     Route::post  ('/'    , 'upsertData' );
