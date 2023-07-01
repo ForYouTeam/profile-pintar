@@ -31,8 +31,11 @@ class KomentarController extends Controller
         $id = $request->id | null;
 
         $payload = array(
-            "_jabatan"  => $request->_jabatan ,
-            "deskripsi" => $request->deskripsi
+            "postingan_id" => $request ->postingan_id ,
+            "alias"        => $request ->alias        ,
+            "_komentar"    => $request ->_komentar    ,
+            "asal"         => $request ->asal         ,
+            "mac_address"  => $request ->mac_address  ,
         );
 
         $data = $this->komentarRepo->upsertPayload($id, $payload);

@@ -11,6 +11,6 @@ class KomentarModel extends Model
     protected $table    = 'komentar';
     protected $fillable = [
         'id', 'postingan_id', 'alias', '_komentar', 'asal',
-        'mac_address', 'created_at', 'updated_at'
+        'mac_address', 'tag', 'created_at', 'updated_at'
     ];
 }
