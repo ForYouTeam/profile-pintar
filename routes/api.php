@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\cms\AnggotaController;
 use App\Http\Controllers\cms\DevisiController;
 use App\Http\Controllers\cms\GaleriController;
 use App\Http\Controllers\cms\JabatanController;
@@ -59,6 +60,14 @@ Route::prefix('v2/postingan')->controller(PostinganController::class)->group(fun
 });
 
 Route::prefix('v2/komentar')->controller(KomentarController::class)->group(function()
+{
+    Route::get   ('/'    , 'getAllData' );
+    Route::post  ('/'    , 'upsertData' );
+    Route::get   ('/{id}', 'getDataById');
+    Route::delete('/{id}', 'deleteData' );
+});
+
+Route::prefix('v2/anggota')->controller(AnggotaController::class)->group(function()
 {
     Route::get   ('/'    , 'getAllData' );
     Route::post  ('/'    , 'upsertData' );
