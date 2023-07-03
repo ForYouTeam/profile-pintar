@@ -17,7 +17,7 @@ class ProfileController extends Controller
 
     public function getView()
     {
-
+        return view('pages.Profile');
     }
 
     public function getAllData()

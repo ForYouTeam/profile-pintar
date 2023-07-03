@@ -16,6 +16,9 @@
                       <li><a href="{{ route('sektor') }}">Sektor</a></li>
                   </ul>
               </li>
+              <li class="nav-item {{Route::is('profile') ? 'active' : ''}}">
+                <a href="{{ route('profile') }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Profile</span></a>
+            </li>
           </ul>
       </div>
   </div>

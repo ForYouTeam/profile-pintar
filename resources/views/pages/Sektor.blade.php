@@ -61,7 +61,7 @@
           <div class="form-group mb-3">
             <input type="hidden" id="id">
             <label for="didirikan">Didirikan</label>
-            <input id="didirikan" type="text" class="form-control" placeholder="--input disini--" autocomplete="off">
+            <input id="didirikan" type="date" class="form-control" placeholder="--input disini--" autocomplete="off">
             <p id="alertdidirikan" class="text-danger mt-2"></p>
           </div>
           <div class="form-group mb-3">

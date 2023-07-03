@@ -17,7 +17,7 @@ class ProfileRepository implements ProfileInterface
   public function getAllPayload(array $meta)
   {
     try {
-      $data = $this->profileModel->orderBy('created_at', 'desc')->get();
+      $data = $this->profileModel->orderBy('created_at', 'desc')->first();
       
       $payloadList = array(
         "message" => "Berhasil mengambil data",
