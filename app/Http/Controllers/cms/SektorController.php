@@ -16,8 +16,8 @@ class SektorController extends Controller
     }
 
     public function getView()
-    {
-
+    {   
+        return view('pages.Sektor');
     }
 
     public function getAllData()

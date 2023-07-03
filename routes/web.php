@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\cms\DevisiController;
 use App\Http\Controllers\cms\JabatanController;
+use App\Http\Controllers\cms\SektorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
@@ -10,3 +11,4 @@ Route::get('/', function(){
 
 Route::get('/jabatan', [JabatanController::class, 'getView'])->name('jabatan');
 Route::get('/devisi' , [DevisiController ::class, 'getView'])->name('devisi' );
+Route::get('/sektor' , [SektorController ::class, 'getView'])->name('sektor' );
