@@ -17,7 +17,7 @@ class DevisiController extends Controller
 
     public function getView()
     {
-
+        return view('pages.Devisi');
     }
 
     public function getAllData()
