@@ -21,6 +21,8 @@
   <!-- vendor css -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   
-  
+  <link rel="stylesheet" href="{{ asset('assets/izitoast/css/iziToast.min.css') }}">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" integrity="sha256-7jUS+MWeqkFdmW9ozkZ7mPagz+QmMbsBlt+Q3MsE+FU=" crossorigin="anonymous">
 
 </head>

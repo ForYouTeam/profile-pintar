@@ -17,7 +17,7 @@ class JabatanController extends Controller
 
     public function getView()
     {
-
+        return view('pages.Jabatan');
     }
 
     public function getAllData()
