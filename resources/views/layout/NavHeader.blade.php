@@ -22,6 +22,9 @@
               <li class="nav-item {{Route::is('profile') ? 'active' : ''}}">
                 <a href="{{ route('profile') }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Profile</span></a>
             </li>
+            <li class="nav-item {{Route::is('akun') ? 'active' : ''}}">
+                <a href="{{ route('akun') }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-settings"></i></span><span class="pcoded-mtext">Acount</span></a>
+            </li>
           </ul>
       </div>
   </div>
