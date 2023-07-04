@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\cms\AkunController;
 use App\Http\Controllers\cms\AnggotaController;
 use App\Http\Controllers\cms\DevisiController;
 use App\Http\Controllers\cms\GaleriController;
@@ -20,3 +21,4 @@ Route::get('/profile'   , [ProfileController   ::class, 'getView'])->name('profi
 Route::get('/anggota'   , [AnggotaController   ::class, 'getView'])->name('anggota'   );
 Route::get('/galeri'    , [GaleriController    ::class, 'getView'])->name('galeri'    );
 Route::get('/postingan' , [PostinganController ::class, 'getView'])->name('postingan' );
+Route::get('/akun'      , [AkunController      ::class, 'getView'])->name('akun'      );

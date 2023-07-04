@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Interfaces\AkunInterface;
 use App\Interfaces\AnggotaInterface;
 use App\Interfaces\DevisiInterface;
 use App\Interfaces\GaleriInterface;
@@ -10,6 +11,7 @@ use App\Interfaces\KomentarInterface;
 use App\Interfaces\PostinganInterface;
 use App\Interfaces\ProfileInterface;
 use App\Interfaces\SektorInterface;
+use App\Repositories\AkunRepository;
 use App\Repositories\AnggotaRepository;
 use App\Repositories\DevisiRepository;
 use App\Repositories\GaleriRepository;
@@ -37,6 +39,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PostinganInterface ::class, PostinganRepository ::class);
         $this->app->bind(KomentarInterface  ::class, KomentarRepository  ::class);
         $this->app->bind(AnggotaInterface   ::class, AnggotaRepository   ::class);
+        $this->app->bind(AkunInterface      ::class, AkunRepository      ::class);
     }
 
     /**
