@@ -18,8 +18,8 @@ class AnggotaModel extends Model
     {
         return $query
             ->leftJoin('jabatan as a', 'anggota.jabatan_id', 'a.id')
-            ->leftJoin('devisi as b' , 'anggota.devisi_id' , 'b.id')
-            ->leftJoin('sektor as c' , 'anggota.sektor_id' , 'c.id')
+            ->leftJoin('devisi as b', 'anggota.devisi_id', 'b.id')
+            ->leftJoin('sektor as c', 'anggota.sektor_id', 'c.id')
             ->select(
                 'anggota.id',
                 'anggota.nama',

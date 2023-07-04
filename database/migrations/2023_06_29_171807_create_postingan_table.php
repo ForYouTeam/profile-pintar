@@ -17,7 +17,7 @@ class CreatePostinganTable extends Migration
             $table->id();
             $table->string('judul', 255);
             $table->text('kontent');
-            $table->foreignId('galeri_id')->constrained('galeri')->onDelete('cascade');
+            $table->foreignId('galeri_id')->nullable()->constrained('galeri')->onDelete('set null');
             $table->string('penulis', 150);
             $table->timestamps();
         });
