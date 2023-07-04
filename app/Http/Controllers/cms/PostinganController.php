@@ -21,7 +21,12 @@ class PostinganController extends Controller
 
     public function getView()
     {
-
+        $post   = $this->postinganRepo->getAllPayload([]);
+        $galeri = $this->galeriRepo   ->getAllPayload([]);
+        return view('pages.Postingan')->with([
+            'post'   => $post  ['data'],
+            'galeri' => $galeri['data']
+        ]);
     }
 
     public function getAllData()
@@ -32,31 +37,13 @@ class PostinganController extends Controller
 
     public function upsertData(PostinganRequest $request)
     {
-        $galeriId = $request->galeri_id | null;
-        $path = array(
-            'path' => $request->path
-        );
-
-        $galeri = $this->galeriRepo->upsertPayload($galeriId, $path);
-        if ($galeri['code'] != 200) {
-            return response()->json($galeri, $galeri['code']);
-        } else {
-
-            if (is_object($galeri['data'])) {
-                $galeriId = $galeri['data']['id'];
-            } else {
-                $galeriId = $request->galeri_id;
-            }
-        }
-
-        // POSTINGAN FUNCTION
         $id = $request->id | null;
 
         $payload = array(
-            "judul"     => $request ->judul   ,
-            "kontent"   => $request ->kontent ,
-            "galeri_id" => $galeriId          ,
-            "penulis"   => $request ->penulis ,
+            "judul"       => $request->judul,
+            "kontent"        => $request->kontent,
+            "galeri_id"      => $request->galeri_id,
+            "penulis"     => $request->penulis,
         );
 
         $data = $this->postinganRepo->upsertPayload($id, $payload);

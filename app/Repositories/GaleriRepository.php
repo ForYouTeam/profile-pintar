@@ -18,14 +18,13 @@ class GaleriRepository implements GaleriInterface
   {
     try {
       $data = $this->galeriModel->orderBy('created_at', 'desc')->get();
-      
+
       $payloadList = array(
         "message" => "Berhasil mengambil data",
         "code"    => 200,
         "icon"    => 'success',
         "data"    => $data
       );
-
     } catch (\Throwable $th) {
       $payloadList = array(
         'message' => $th->getMessage(),
@@ -46,32 +45,29 @@ class GaleriRepository implements GaleriInterface
       if ($id) {
 
         $findData = $this->getPayloadById($id);
-        if ($findData['code'] == 404) {
+        if ($findData['code'] === 404) {
           return $findData;
         }
 
         $payload['updated_at'] = $date;
 
         $data    = $this->galeriModel->whereId($id)->update($payload);
-        $message = "Data berhasil perbaharui" ;
-
+        $message = "Data berhasil perbaharui";
       } else {
 
         $payload['created_at'] = $date;
         $payload['updated_at'] = $date;
 
         $data    = $this->galeriModel->create($payload);
-        $message = "Data berhasil dibuat" ;
-
+        $message = "Data berhasil dibuat";
       }
-      
+
       $payloadList = array(
         "message" => $message,
         "code"    => 200,
         "icon"    => 'success',
         "data"    => $data
       );
-
     } catch (\Throwable $th) {
       $payloadList = array(
         'message' => $th->getMessage(),
@@ -91,21 +87,20 @@ class GaleriRepository implements GaleriInterface
 
       if (!$data) {
         $message = "Data tidak ditemukan";
-        $code    = 404                   ;
-        $icon    = 'info'                ;
+        $code    = 404;
+        $icon    = 'info';
       } else {
         $message = "Data berhasil ditemukan";
-        $code    = 200                      ;
-        $icon    = 'success'                ;
+        $code    = 200;
+        $icon    = 'success';
       }
-      
+
       $payloadList = array(
         "message" => $message,
         "code"    => $code,
         "icon"    => $icon,
         "data"    => $data
       );
-
     } catch (\Throwable $th) {
       $payloadList = array(
         'message' => $th->getMessage(),
@@ -125,21 +120,20 @@ class GaleriRepository implements GaleriInterface
 
       if (!$data->first()) {
         $message = "Data tidak ditemukan";
-        $code    = 404                   ;
-        $icon    = 'info'                ;
+        $code    = 404;
+        $icon    = 'info';
       } else {
         $message = "Data berhasil dihapus";
-        $code    = 200                      ;
-        $icon    = 'success'                ;
+        $code    = 200;
+        $icon    = 'success';
       }
-      
+
       $payloadList = array(
         "message" => $message,
         "code"    => $code,
         "icon"    => $icon,
         "data"    => $data->delete()
       );
-
     } catch (\Throwable $th) {
       $payloadList = array(
         'message' => $th->getMessage(),

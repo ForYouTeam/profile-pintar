@@ -26,10 +26,10 @@ class PostinganRequest extends FormRequest
     public function rules()
     {
         return [
-            "judul"   => "required|min:2|max:150" ,
-            "kontent" => "required|min:2"         ,
-            "path"    => "required"               ,
-            "penulis" => "required|max:150"       ,
+            "judul"     => "required|min:2|max:150" ,
+            "kontent"   => "required|min:2"         ,
+            "galeri_id" => "required"               ,
+            "penulis"   => "required|max:150"       ,
         ];
     }
 
