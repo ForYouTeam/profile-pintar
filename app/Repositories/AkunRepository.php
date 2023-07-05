@@ -18,7 +18,7 @@ class AkunRepository implements AkunInterface
   public function getAllPayload(array $meta)
   {
     try {
-      $data = $this->akunModel->orderBy('created_at', 'desc')->get();
+      $data = $this->akunModel->where('scope', 'admin')->orderBy('created_at', 'desc')->get();
 
       $payloadList = array(
         "message" => "Berhasil mengambil data",
@@ -49,6 +49,13 @@ class AkunRepository implements AkunInterface
         $findData = $this->getPayloadById($id);
         if ($findData['code'] == 404) {
           return $findData;
+        }
+
+        if ($findData['data']['scope'] == 'super-admin') {
+          return array(
+            'message' => "Data tidak ditemukan",
+            'code'    => 404
+          );
         }
 
         $payload['updated_at'] = $date;

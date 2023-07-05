@@ -5,6 +5,7 @@ use App\Http\Controllers\cms\AnggotaController;
 use App\Http\Controllers\cms\DevisiController;
 use App\Http\Controllers\cms\GaleriController;
 use App\Http\Controllers\cms\JabatanController;
+use App\Http\Controllers\cms\KomentarController;
 use App\Http\Controllers\cms\PostinganController;
 use App\Http\Controllers\cms\ProfileController;
 use App\Http\Controllers\cms\SektorController;
@@ -21,4 +22,5 @@ Route::get('/profile'   , [ProfileController   ::class, 'getView'])->name('profi
 Route::get('/anggota'   , [AnggotaController   ::class, 'getView'])->name('anggota'   );
 Route::get('/galeri'    , [GaleriController    ::class, 'getView'])->name('galeri'    );
 Route::get('/postingan' , [PostinganController ::class, 'getView'])->name('postingan' );
+Route::get('/komentar'  , [KomentarController  ::class, 'getView'])->name('komentar'  );
 Route::get('/akun'      , [AkunController      ::class, 'getView'])->name('akun'      );
