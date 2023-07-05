@@ -5,19 +5,26 @@ namespace App\Http\Controllers\cms;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KomentarRequest;
 use App\Interfaces\KomentarInterface;
+use App\Interfaces\PostinganInterface;
 use Illuminate\Http\Request;
 
 class KomentarController extends Controller
 {
     private KomentarInterface $komentarRepo;
-    public function __construct(KomentarInterface $komentarRepo)
+    private PostinganInterface $postinganRepo;
+    public function __construct(KomentarInterface $komentarRepo, PostinganInterface $postinganRepo)
     {
-        $this->komentarRepo = $komentarRepo;
+        $this->komentarRepo  = $komentarRepo ;
+        $this->postinganRepo = $postinganRepo;
     }
 
     public function getView()
     {
+        $data = array(
+            'postingan' => $this->postinganRepo->getAllPayload([])['data']
+        );
 
+        return view('pages.Komentar')->with('data', $data);
     }
 
     public function getAllData()
@@ -36,6 +43,7 @@ class KomentarController extends Controller
             "_komentar"    => $request ->_komentar    ,
             "asal"         => $request ->asal         ,
             "mac_address"  => $request ->mac_address  ,
+            "tag"          => $request ->tag          ,
         );
 
         $data = $this->komentarRepo->upsertPayload($id, $payload);

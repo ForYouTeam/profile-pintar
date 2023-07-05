@@ -19,7 +19,7 @@ class CreateKomentarTable extends Migration
             $table->string ('alias'       , 150);
             $table->text   ('_komentar'        );
             $table->string ('asal'        , 15 );
-            $table->string ('mac_address', 25  );
+            $table->string ('mac_address', 150 );
             $table->timestamps();
         });
     }
