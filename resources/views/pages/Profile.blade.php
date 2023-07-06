@@ -18,8 +18,36 @@
   <div class="card-body table-border-style">
     <div class="row mx-3 my-2">
         <div class="col-lg-6">
-            <div class="form-group fill">
+            <div class="form-group">
                 <input type="hidden" id="id">
+                <label for="telepon">Telepon</label>
+                <input id="telepon" type="number" class="form-control" placeholder="--input disini--" autocomplete="off">
+                <p id="alerttelepon" class="text-danger mt-2"></p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="form-control" placeholder="--input disini--" autocomplete="off">
+                <p id="alertemail" class="text-danger mt-2"></p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group fill">
+                <label class="" for="Text">Alamat</label>
+                <p class="text-danger" id="alertalamat"></p>
+                <textarea id="alamat" cols="30" rows="10" class="form-control" placeholder="--input disini--"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group fill">
+                <label class="" for="Text">Deskripsi</label>
+                <p class="text-danger" id="alertdeskripsi"></p>
+                <textarea id="deskripsi" cols="30" rows="5" class="form-control" placeholder="--input disini--"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group fill">
                 <label class="" for="Text">Visi</label>
                 <p class="text-danger" id="alertvisi"></p>
                 <textarea id="visi" cols="30" rows="10" class="form-control" placeholder="--input disini--"></textarea>
@@ -30,13 +58,6 @@
                 <label class="" for="Text">Misi</label>
                 <p class="text-danger" id="alertmisi"></p>
                 <textarea id="misi" cols="30" rows="10" class="form-control" placeholder="--input disini--"></textarea>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="form-group fill">
-                <label class="" for="Text">Deskripsi</label>
-                <p class="text-danger" id="alertdeskripsi"></p>
-                <textarea id="deskripsi" cols="30" rows="5" class="form-control" placeholder="--input disini--"></textarea>
             </div>
         </div>
     </div>
@@ -51,10 +72,13 @@
         const baseUrl = `{{ config('app.url') }}`
 
         function clearInput() {
-            $('#alertvisi'     ).val('')
-            $('#alertmisi'     ).val('')
-            $('#alertdeskripsi').val('')
-            $('#alertdidirikan').val('')
+            $('#alerttalamat'   ).val('')
+            $('#alerttelepon'   ).val('')
+            $('#alertemail'     ).val('')
+            $('#alertvisi'      ).val('')
+            $('#alertmisi'      ).val('')
+            $('#alertdeskripsi' ).val('')
+            $('#alertdidirikan' ).val('')
         }
 
         $(document).on('click', '#btn-del', function() {
@@ -109,6 +133,9 @@
         function postData() {
             const data = {
                 id        : $('#id'        ).val(),
+                email     : $('#email'     ).val(),
+                telepon   : $('#telepon'   ).val(),
+                alamat    : $('#alamat'    ).val(),
                 visi      : $('#visi'      ).val(),
                 misi      : $('#misi'      ).val(),
                 deskripsi : $('#deskripsi' ).val(),

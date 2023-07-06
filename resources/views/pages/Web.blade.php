@@ -29,6 +29,18 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('assets/web/css/style.css')}}" rel="stylesheet">
+    <style>
+        .crop-image{
+            width: 100% !important; /* Ganti dengan lebar div yang diinginkan */
+            height: 200px !important; /* Ganti dengan tinggi div yang diinginkan */
+            overflow: hidden !important;
+        }
+        .cs-image{
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,30 +63,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-up m-0">
-                        <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="quote.html" class="dropdown-item">Free Quote</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="#home" class="nav-item nav-link">Awal</a>
+                <a href="#about-us" class="nav-item nav-link">Tentang Kami</a>
+                <a href="#kontribusi" class="nav-item nav-link">Kontribusi</a>
+                <a href="#postingan" class="nav-item nav-link">Postingan</a>
+                <a href="#keunggulan" class="nav-item nav-link">Keunggulan</a>
+                <a href="#kontak" class="nav-item nav-link">Kontak</a>
             </div>
-            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+012 345 6789</h4>
+            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+{{ $data['aboutUs']['telepon'] }}</h4>
         </div>
     </nav>
     <!-- Navbar End -->
 
 
     <!-- Carousel Start -->
-    <div class="container-fluid p-0 pb-5">
+    <div id="home" class="container-fluid p-0 pb-5">
         <div class="owl-carousel header-carousel position-relative mb-5">
             <div class="owl-carousel-item position-relative">
                 <img class="img-fluid" src="{{asset('assets/web/img/carousel-1.jpg')}}" alt="">
@@ -97,7 +100,7 @@
 
 
     <!-- About Start -->
-    <div class="container-fluid overflow-hidden py-5 px-lg-0">
+    <div id="about-us" class="container-fluid overflow-hidden py-5 px-lg-0">
         <div class="container about py-5 px-lg-0">
             <div class="row g-5 mx-lg-0">
                 <div class="col-lg-5 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
@@ -109,20 +112,22 @@
                     <h6 class="text-secondary text-uppercase mb-3">Tentang Kami</h6>
                     <h1 class="mb-5">Membantu Mendorong Ekonomi Masyarakat</h1>
                     <p class="mb-5">
-                        Kami adalah sebuah koperasi yang berdedikasi untuk membantu masyarakat dalam mengembangkan usaha mereka. Dengan semangat kolaborasi dan kemitraan, kami berkomitmen untuk memperkuat perekonomian lokal dan meningkatkan kesejahteraan anggota koperasi.
+                        {{ $data['aboutUs']['deskripsi'] }}
                     </p>
                     <div class="row g-4 mb-5">
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
                             <i class="fa fa-globe fa-3x text-primary mb-3"></i>
                             <h5>Visi</h5>
                             <p class="m-0">
-                                menciptakan ekosistem bisnis yang inklusif dan berkelanjutan di mana setiap individu memiliki kesempatan yang adil untuk mengembangkan usaha mereka sendiri. Kami percaya bahwa dengan dukungan yang tepat, setiap orang memiliki potensi untuk meraih kesuksesan dan berkontribusi pada pertumbuhan ekonomi masyarakat.</p>
+                                {{ $data['aboutUs']['visi'] }}
+                            </p>
                         </div>
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
                             <i class="fa fa-paper-plane fa-3x text-primary mb-3"></i>
                             <h5>Misi</h5>
                             <p class="m-0">
-                                menyediakan aksesibilitas, pengetahuan, dan sumber daya yang dibutuhkan oleh anggota koperasi untuk mengoptimalkan potensi bisnis mereka. Kami menyediakan beragam layanan, termasuk pendampingan bisnis, pelatihan, konsultasi, dan akses ke modal usaha yang terjangkau.</p>
+                                {{ $data['aboutUs']['misi'] }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -133,7 +138,7 @@
 
 
     <!-- Fact Start -->
-    <div class="container-xxl py-5">
+    <div id="kontribusi" class="container-xxl py-5">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -144,7 +149,7 @@
                         <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
                         <div class="ps-4">
                             <h6>Hubungi Kami!</h6>
-                            <h3 class="text-primary m-0">+012 345 6789</h3>
+                            <h3 class="text-primary m-0">+{{ $data['aboutUs']['telepon'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -178,73 +183,27 @@
 
 
     <!-- Service Start -->
-    <div class="container-xxl py-5">
+    <div id="postingan" class="container-xxl py-5">
         <div class="container py-5">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="text-secondary text-uppercase">Postingan</h6>
                 <h1 class="mb-5">Liat postingan terbaru disini!</h1>
             </div>
             <div class="row g-4">
+                @foreach ($data['postingan'] as $item)
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item p-4">
                         <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="{{asset('assets/web/img/service-1.jpg')}}" alt="">
+                            <div class="crop-image">
+                                <img class="img-fluid cs-image" src="{{asset('storage/gambar')}}/{{$item['path']}}" alt="">
+                            </div>
                         </div>
-                        <h4 class="mb-3">Air Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
+                        <h4 class="mb-3">{{ $item['judul'] }}</h4>
+                        <p>{{ $item['kontent'] }}.</p>
                         <a class="btn-slide mt-2" role="button" id="comment"><i class="fa fa-comment"></i><span>Komentar</span></a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="{{asset('assets/web/img/service-2.jpg')}}" alt="">
-                        </div>
-                        <h4 class="mb-3">Ocean Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-comment"></i><span>Komentar</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="{{asset('assets/web/img/service-3.jpg')}}" alt="">
-                        </div>
-                        <h4 class="mb-3">Road Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-comment"></i><span>Komentar</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="{{asset('assets/web/img/service-4.jpg')}}" alt="">
-                        </div>
-                        <h4 class="mb-3">Train Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-comment"></i><span>Komentar</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="{{asset('assets/web/img/service-5.jpg')}}" alt="">
-                        </div>
-                        <h4 class="mb-3">Customs Clearance</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-comment"></i><span>Komentar</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="{{asset('assets/web/img/service-6.jpg')}}" alt="">
-                        </div>
-                        <h4 class="mb-3">Warehouse Solutions</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-comment"></i><span>Komentar</span></a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -301,7 +260,7 @@
 
 
     <!-- Feature Start -->
-    <div class="container-fluid overflow-hidden py-5 px-lg-0">
+    <div id="keunggulan" class="container-fluid overflow-hidden py-5 px-lg-0">
         <div class="container feature py-5 px-lg-0">
             <div class="row g-5 mx-lg-0">
                 <div class="col-lg-6 feature-text wow fadeInUp" data-wow-delay="0.1s">
@@ -351,7 +310,7 @@
                         <i class="fa fa-phone fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
                         <div class="ps-4">
                             <h6>Whatsapp Only!</h6>
-                            <h3 class="text-primary m-0">+012 345 6789</h3>
+                            <h3 class="text-primary m-0">+{{ $data['aboutUs']['telepon'] }}</h3>
                         </div>
                     </div>
                 </div>
@@ -365,10 +324,80 @@
     <div class="container-xxl py-5">
         <div class="container py-5">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-secondary text-uppercase">Our Team</h6>
-                <h1 class="mb-5">Expert Team Members</h1>
+                <h6 class="text-secondary text-uppercase">Struktur Organisasi</h6>
+                <h1 class="mb-5">Anggota Koperasi</h1>
             </div>
-            <div class="row g-4">
+            <div class="row g-4 text-center justify-content-center">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h5 class="text-center text-muted">MANAGER</h5>
+                    <div class="team-item px-4 pb-2">
+                        <div class="overflow-hidden mb-4">
+                        </div>
+                        <h5 class="mb-0">Ir. Wayan Sukarja</h5>
+                        <p>Manager</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mt-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.3s">
+                    <h5 class="text-center text-muted">KONSULTAN</h5>
+                    <div class="team-item px-4 pb-2">
+                        <div class="overflow-hidden mb-4">
+                        </div>
+                        <h5 class="mb-0">Ir. Wayan Sukarja</h5>
+                        <p>Konsultan</p>
+                    </div>
+                    <div class="team-item px-4 pb-2">
+                        <div class="overflow-hidden mb-4">
+                        </div>
+                        <h5 class="mb-0">Ir. Made Yohanes</h5>
+                        <p>Konsultan</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.3s">
+                    <h5 class="text-center text-muted">PENGURUS</h5>
+                    <div class="team-item px-4 pb-2">
+                        <div class="overflow-hidden mb-4">
+                        </div>
+                        <h5 class="mb-0">Ir. Wayan Sukarja</h5>
+                        <p>Ketua</p>
+                    </div>
+                    <div class="team-item px-4 pb-2">
+                        <div class="overflow-hidden mb-4">
+                        </div>
+                        <h5 class="mb-0">Ir. Made Yohanes</h5>
+                        <p>Sekretaris</p>
+                    </div>
+                    <div class="team-item px-4 pb-2">
+                        <div class="overflow-hidden mb-4">
+                        </div>
+                        <h5 class="mb-0">Ir. Made Yohanes</h5>
+                        <p>Bendahara</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.3s">
+                    <h5 class="text-center text-muted">PENGAWAS</h5>
+                    <div class="team-item px-4 pb-2">
+                        <div class="overflow-hidden mb-4">
+                        </div>
+                        <h5 class="mb-0">Ir. Wayan Sukarja</h5>
+                        <p>Ketua</p>
+                    </div>
+                    <div class="team-item px-4 pb-2">
+                        <div class="overflow-hidden mb-4">
+                        </div>
+                        <h5 class="mb-0">Ir. Made Yohanes</h5>
+                        <p>Anggota</p>
+                    </div>
+                    <div class="team-item px-4 pb-2">
+                        <div class="overflow-hidden mb-4">
+                        </div>
+                        <h5 class="mb-0">Ir. Made Yohanes</h5>
+                        <p>Anggota</p>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="row g-4">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item p-4">
                         <div class="overflow-hidden mb-4">
@@ -437,7 +466,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- Team End -->
@@ -502,43 +531,19 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
+    <div id="kontak" class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
         <div class="container py-5">
             <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <div class="col-lg-12 col-md-12">
+                    <h4 class="text-light mb-4">Alamat</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{ $data['aboutUs']['alamat'] }}</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+{{ $data['aboutUs']['telepon'] }}</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ $data['aboutUs']['email'] }}</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Services</h4>
-                    <a class="btn btn-link" href="">Air Freight</a>
-                    <a class="btn btn-link" href="">Sea Freight</a>
-                    <a class="btn btn-link" href="">Road Freight</a>
-                    <a class="btn btn-link" href="">Logistic Solutions</a>
-                    <a class="btn btn-link" href="">Industry solutions</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Quick Links</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                     </div>
                 </div>
             </div>
@@ -547,7 +552,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="#">sinarkasih.co.id</a>, All Right Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
