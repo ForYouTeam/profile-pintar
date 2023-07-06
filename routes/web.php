@@ -12,8 +12,8 @@ use App\Http\Controllers\cms\SektorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
-    return view('pages.Dashboard');
-})->name('dashboard');
+    return view('pages.Web');
+})->name('landing');
 
 Route::get('/jabatan'   , [JabatanController   ::class, 'getView'])->name('jabatan'   );
 Route::get('/devisi'    , [DevisiController    ::class, 'getView'])->name('devisi'    );
