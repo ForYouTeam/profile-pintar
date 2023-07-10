@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\cms\AkunController;
 use App\Http\Controllers\cms\AnggotaController;
+use App\Http\Controllers\cms\DashboardController;
 use App\Http\Controllers\cms\DevisiController;
 use App\Http\Controllers\cms\GaleriController;
 use App\Http\Controllers\cms\JabatanController;
@@ -82,4 +83,9 @@ Route::prefix('v2/akun')->controller(AkunController::class)->group(function()
     Route::post  ('/'    , 'upsertData' );
     Route::get   ('/{id}', 'getDataById');
     Route::delete('/{id}', 'deleteData' );
+});
+
+Route::prefix('v2/dashboard')->controller(DashboardController::class)->group(function()
+{
+    Route::get   ('/'    , 'getPostCount');
 });
