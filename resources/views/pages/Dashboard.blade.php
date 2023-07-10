@@ -14,11 +14,11 @@
   </div>
   <div class="card-body p-4" id="app">
     <div class="row">
-			<div class="col-lg-3">
+			<div class="col-lg-4">
 					<dashboard/>
 			</div>
-			<div class="col-lg-9">
-        <div class="row">
+    <div class="col-lg-8">
+        <div class="row mt-5">
           <div class="col-sm-6">
               <div class="card">
                   <div class="card-body">
@@ -119,9 +119,9 @@
                   </div>
               </div>
           </div>
+        </div>
       </div>
-      </div>
-			</div>
+    </div>
     </div>
   </div>
 </div>
