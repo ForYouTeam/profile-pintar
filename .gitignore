@@ -16,3 +16,4 @@ yarn-error.log
 mysql-data
 public/js
 composer.lock
+package-lock.json

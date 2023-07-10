@@ -328,12 +328,14 @@
             <div class="row g-4 text-center justify-content-center">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <h5 class="text-center text-muted">MANAGER</h5>
-                    <div class="team-item px-4 pb-2">
-                        <div class="overflow-hidden mb-4">
+                    @if ($data['anggota']['manager'])
+                        <div class="team-item px-4 pb-2">
+                            <div class="overflow-hidden mb-4">
+                            </div>
+                            <h5 class="mb-0">{{$data['anggota']['manager']->nama}}</h5>
+                            <p>{{$data['anggota']['manager']->jabatan}}</p>
                         </div>
-                        <h5 class="mb-0">{{$data['anggota']['manager']->nama}}</h5>
-                        <p>{{$data['anggota']['manager']->jabatan}}</p>
-                    </div>
+                    @endif
                 </div>
             </div>
             <div class="row g-4 mt-4">
