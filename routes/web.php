@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\cms\AkunController;
 use App\Http\Controllers\cms\AnggotaController;
+use App\Http\Controllers\cms\DashboardController;
 use App\Http\Controllers\cms\DevisiController;
 use App\Http\Controllers\cms\GaleriController;
 use App\Http\Controllers\cms\JabatanController;
@@ -14,10 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('landing');
 
-Route::get('/dashboard', function () {
-    return view('pages.Dashboard');
-})->name('dashboard');
-
+Route::get('/dashboard', [DashboardController::class, 'getView'])->name('dashboard');
 Route::get('/jabatan'  , [JabatanController  ::class, 'getView'])->name('jabatan'  );
 Route::get('/jabatan'  , [JabatanController  ::class, 'getView'])->name('jabatan'  );
 Route::get('/devisi'   , [DevisiController   ::class, 'getView'])->name('devisi'   );

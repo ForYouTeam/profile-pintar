@@ -2,6 +2,7 @@
   <DoughnutChart :chart-data="orderChartOptions" />
 </template>
 <script setup>
+  import axios from 'axios'
   import {reactive} from 'vue'
   import { DoughnutChart } from "vue-chart-3";
   import { Chart, registerables } from "chart.js";
@@ -17,4 +18,9 @@
     }
     ]
   })
+
+  const baseUrl = process.env.VUE_APP_API_URL
+  const getChartData = () => {
+    axios.get(`${baseUrl}/`)
+  }
 </script>
