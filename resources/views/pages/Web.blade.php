@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Logistica - Shipping Company Website Template</title>
+    <title>KOPERASI-SINAR KASIH</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{asset('assets/web/img/logo-koprasi.png')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,7 +73,7 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
         <a href="index.html" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
-            <h2 class="mb-2 text-white">SINAR KASIH</h2>
+            <img src="{{asset('assets/web/img/logo-koprasi.png')}}" alt="" style="height: 50px">&nbsp;<h2 class="text-light">SINAR KASIH</h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -97,7 +97,7 @@
     <div id="home" class="container-fluid p-0 pb-5">
         <div class="owl-carousel header-carousel position-relative mb-5">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="{{asset('assets/web/img/carousel-1.jpg')}}" alt="">
+                <img class="img-fluid" src="{{asset('assets/web/img/bgkoprasi.jpg')}}" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
                     <div class="container">
                         <div class="row justify-content-start">
