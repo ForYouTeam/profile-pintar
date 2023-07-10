@@ -40,6 +40,23 @@
             height: 100% !important;
             object-fit: cover !important;
         }
+        #komentarlist{
+            max-height: 500px;
+            width: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        .img-comment {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .my-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
     </style>
 </head>
 
@@ -200,7 +217,7 @@
                         </div>
                         <h4 class="mb-3">{{ $item['judul'] }}</h4>
                         <p>{{ $item['kontent'] }}.</p>
-                        <a class="btn-slide mt-2" role="button" id="comment"><i class="fa fa-comment"></i><span>Komentar</span></a>
+                        <a class="btn-slide mt-2" role="button" id="comment" data-id="{{$item['id']}}" data-url="{{asset('storage/gambar')}}/{{$item['path']}}"><i class="fa fa-comment"></i><span>Komentar</span></a>
                     </div>
                 </div>
                 @endforeach
@@ -208,47 +225,28 @@
         </div>
     </div>
     <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModal" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-fullscreen">
           <div class="modal-content">
             <div class="modal-body">
                 <div class="container-fluid">
-                    <div class="row py-3 mb-4">
-                        <div class="col-lg-6">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="{{asset('assets/web/img/service-1.jpg')}}" alt="">
+                    <div class="row">
+                        <div class="col-lg-8 my-container">
+                            <img id="imgcomment" class="img-comment" src="" alt="">
+                        </div>
+                        <div class="col-lg-4 p-3 mt-1 shadow">
+                            <h4>TITLE</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius cupiditate modi blanditiis, pariatur obcaecati quos ipsam ea incidunt. Voluptatem fuga pariatur, atque similique vitae minima ipsum dicta accusamus suscipit sit?</p>
+                            <hr>
+                            <div id="komentarlist">
+                            
+                            </div>
+                            <div class="d-flex mt-5">
+                                <input id="postinganid" type="hidden">
+                                <input id="alias" required type="text" class="form-control float-start mt-2" placeholder="--Alias nama disini--" style="width: 40% !important">
+                                <input id="_komentar" required type="text" class="form-control float-start mt-2" placeholder="--Komentar disini--">
+                                <button id="sendcomment" type="button" class="btn btn-primary float-end mt-2 ms-1 rounded" data-dismiss="modal"><i class="fa fa-comment fs-4"></i></button>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <h4 class="mb-3">Air Freight</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <p class="m-0">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, at perspiciatis quaerat sunt dolorem, magni architecto vel sint itaque neque ipsum officiis tempore officia maxime libero, necessitatibus dolorum magnam porro?
-                            </p>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="testimonial-item my-3">
-                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                        <div class="d-flex align-items-end">
-                            <p class="mb-1" style="color: gray !important; font-size: 11pt;"><i class="fa fa-user me-1"></i> <b>Alias name</b> <span class="ms-1" style="font-size: 9pt;">1 jam sebelumnya</span></p>
-                        </div>
-                        <div class="row mt-1">
-                            <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="testimonial-item my-3">
-                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                        <div class="d-flex align-items-end">
-                            <p class="mb-1" style="color: gray !important; font-size: 11pt;"><i class="fa fa-user me-1"></i> <b>Alias name</b> <span class="ms-1" style="font-size: 9pt;">1 jam sebelumnya</span></p>
-                        </div>
-                        <div class="row mt-1">
-                            <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex mt-5">
-                        <input type="text" class="form-control float-start mt-2" placeholder="--Komentar disini--">
-                        <button type="button" class="btn btn-primary float-end mt-2 ms-1 rounded" data-dismiss="modal"><i class="fa fa-comment fs-4"></i></button>
                     </div>
                     <button id="closeModal" type="button" class="btn btn-secondary float-end mt-4 ms-5" data-dismiss="modal">Tutup</button>
                 </div>
@@ -333,68 +331,44 @@
                     <div class="team-item px-4 pb-2">
                         <div class="overflow-hidden mb-4">
                         </div>
-                        <h5 class="mb-0">Ir. Wayan Sukarja</h5>
-                        <p>Manager</p>
+                        <h5 class="mb-0">{{$data['anggota']['manager']->nama}}</h5>
+                        <p>{{$data['anggota']['manager']->jabatan}}</p>
                     </div>
                 </div>
             </div>
             <div class="row g-4 mt-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.3s">
                     <h5 class="text-center text-muted">KONSULTAN</h5>
+                   @foreach ($data['anggota']['konsultan'] as $item)
                     <div class="team-item px-4 pb-2">
                         <div class="overflow-hidden mb-4">
                         </div>
-                        <h5 class="mb-0">Ir. Wayan Sukarja</h5>
-                        <p>Konsultan</p>
+                        <h5 class="mb-0">{{$item->nama}}</h5>
+                        <p>{{$item->jabatan}}</p>
                     </div>
-                    <div class="team-item px-4 pb-2">
-                        <div class="overflow-hidden mb-4">
-                        </div>
-                        <h5 class="mb-0">Ir. Made Yohanes</h5>
-                        <p>Konsultan</p>
-                    </div>
+                   @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.3s">
                     <h5 class="text-center text-muted">PENGURUS</h5>
+                    @foreach ($data['anggota']['pengurus'] as $item)
                     <div class="team-item px-4 pb-2">
                         <div class="overflow-hidden mb-4">
                         </div>
-                        <h5 class="mb-0">Ir. Wayan Sukarja</h5>
-                        <p>Ketua</p>
+                        <h5 class="mb-0">{{$item->nama}}</h5>
+                        <p>{{$item->jabatan}}</p>
                     </div>
-                    <div class="team-item px-4 pb-2">
-                        <div class="overflow-hidden mb-4">
-                        </div>
-                        <h5 class="mb-0">Ir. Made Yohanes</h5>
-                        <p>Sekretaris</p>
-                    </div>
-                    <div class="team-item px-4 pb-2">
-                        <div class="overflow-hidden mb-4">
-                        </div>
-                        <h5 class="mb-0">Ir. Made Yohanes</h5>
-                        <p>Bendahara</p>
-                    </div>
+                   @endforeach
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp text-center" data-wow-delay="0.3s">
                     <h5 class="text-center text-muted">PENGAWAS</h5>
+                    @foreach ($data['anggota']['pengawas'] as $item)
                     <div class="team-item px-4 pb-2">
                         <div class="overflow-hidden mb-4">
                         </div>
-                        <h5 class="mb-0">Ir. Wayan Sukarja</h5>
-                        <p>Ketua</p>
+                        <h5 class="mb-0">{{$item->nama}}</h5>
+                        <p>{{$item->jabatan}}</p>
                     </div>
-                    <div class="team-item px-4 pb-2">
-                        <div class="overflow-hidden mb-4">
-                        </div>
-                        <h5 class="mb-0">Ir. Made Yohanes</h5>
-                        <p>Anggota</p>
-                    </div>
-                    <div class="team-item px-4 pb-2">
-                        <div class="overflow-hidden mb-4">
-                        </div>
-                        <h5 class="mb-0">Ir. Made Yohanes</h5>
-                        <p>Anggota</p>
-                    </div>
+                   @endforeach
                 </div>
             </div>
             {{-- <div class="row g-4">
@@ -471,65 +445,6 @@
     </div>
     <!-- Team End -->
 
-
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="text-center">
-                <h6 class="text-secondary text-uppercase">Semua Pertanyaan</h6>
-                <h1 class="mb-0">Apa yang kamu tanyakan!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{{asset('assets/web/img/testimonial-1.jpg')}}" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{{asset('assets/web/img/testimonial-2.jpg')}}" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{{asset('assets/web/img/testimonial-3.jpg')}}" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{{asset('assets/web/img/testimonial-4.jpg')}}" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
-
     <!-- Footer Start -->
     <div id="kontak" class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
         <div class="container py-5">
@@ -578,12 +493,68 @@
     <script src="{{asset('assets/web/lib/waypoints/waypoints.min.js')}}"></script>
     <script src="{{asset('assets/web/lib/counterup/counterup.min.js')}}"></script>
     <script src="{{asset('assets/web/lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/web/moment-with-locales.min.js')}}"></script>
 
     <!-- Template Javascript -->
     <script src="{{asset('assets/web/js/main.js')}}"></script>
     <script>
+        const baseUrl = `{{config('app.url')}}`
+        function getComment(params) {
+            $.get(`${baseUrl}/api/v2/komentar?postingan_id=${params}`, (res) => {
+                let data = res.data
+                $('#komentarlist').html('')
+                $.each(data, (i, d) => {
+                    $('#komentarlist').append(`
+                        <div class="testimonial-item my-3">
+                            <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                            <div class="d-flex align-items-end">
+                                <p class="mb-1" style="color: gray !important; font-size: 11pt;"><i class="fa fa-user me-1"></i> <b>${d.alias}</b> <span class="ms-1" style="font-size: 9pt;">${moment(d.created_at).locale('id').fromNow()}</span></p>
+                            </div>
+                            <div class="row mt-1">
+                                <p class="mb-0">${d._komentar}.</p>
+                            </div>
+                        </div>
+                    `)
+                })
+
+            })
+        }
+
+        $(document).on('click', '#sendcomment', function()
+        {
+            let data = {
+                postingan_id: $('#postinganid').val(),
+                alias       : $('#alias'      ).val(),
+                _komentar   : $('#_komentar'  ).val(),
+                asal        : 'user',
+                mac_address : '123324'
+            }
+
+            $.ajax({
+                url        : `${baseUrl}/api/v2/komentar/`,
+                method     : "POST"                   ,
+                data       : data                     ,
+                success: function(res) {
+                    getComment($('#postinganid').val())
+                    $('#_komentar'  ).val('')
+                },
+                error: function(err) {
+                },
+                dataType   : "json"
+            });
+        })
+        
         $(document).on('click', '#comment', function()
         {
+            let dataId  = $(this).data('id' )
+            let imgpath = $(this).data('url')
+
+            $('#postinganid' ).val(dataId)
+            $('#alias'       ).val(''),
+            $('#_komentar'   ).val(''),
+            $('#imgcomment'  ).attr('src', imgpath)
+
+            getComment(dataId)
             $('#postModal').modal('show')
         })
 

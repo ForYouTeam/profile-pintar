@@ -29,7 +29,11 @@ class KomentarController extends Controller
 
     public function getAllData()
     {
-        $data = $this->komentarRepo->getAllPayload([]);
+        $params = array(
+            'postingan_id' => request('postingan_id')
+        );
+
+        $data = $this->komentarRepo->getAllPayload($params);
         return response()->json($data, $data['code']);
     }
 
