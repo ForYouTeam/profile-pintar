@@ -87,7 +87,11 @@
                 <a href="#keunggulan" class="nav-item nav-link">Keunggulan</a>
                 <a href="#kontak" class="nav-item nav-link">Kontak</a>
             </div>
-            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+{{ $data['aboutUs']['telepon'] }}</h4>
+            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>
+                @if ($data['aboutUs'])
+                    {{ $data['aboutUs']['telepon'] }}
+                @endif
+            </h4>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -129,21 +133,27 @@
                     <h6 class="text-secondary text-uppercase mb-3">Tentang Kami</h6>
                     <h1 class="mb-5">Membantu Mendorong Ekonomi Masyarakat</h1>
                     <p class="mb-5">
-                        {{ $data['aboutUs']['deskripsi'] }}
+                        @if ($data['aboutUs'])
+                            {{ $data['aboutUs']['deskripsi'] }}
+                        @endif
                     </p>
                     <div class="row g-4 mb-5">
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
                             <i class="fa fa-globe fa-3x text-primary mb-3"></i>
                             <h5>Visi</h5>
                             <p class="m-0">
-                                {{ $data['aboutUs']['visi'] }}
+                                @if ($data['aboutUs'])
+                                    {{ $data['aboutUs']['visi'] }}
+                                @endif
                             </p>
                         </div>
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
                             <i class="fa fa-paper-plane fa-3x text-primary mb-3"></i>
                             <h5>Misi</h5>
                             <p class="m-0">
-                                {{ $data['aboutUs']['misi'] }}
+                                @if ($data['aboutUs'])
+                                    {{ $data['aboutUs']['misi'] }}
+                                @endif
                             </p>
                         </div>
                     </div>
@@ -166,7 +176,11 @@
                         <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
                         <div class="ps-4">
                             <h6>Hubungi Kami!</h6>
-                            <h3 class="text-primary m-0">+{{ $data['aboutUs']['telepon'] }}</h3>
+                            <h3 class="text-primary m-0">
+                                @if ($data['aboutUs'])
+                                    {{ $data['aboutUs']['telepon'] }}
+                                @endif    
+                            </h3>
                         </div>
                     </div>
                 </div>
@@ -308,7 +322,10 @@
                         <i class="fa fa-phone fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
                         <div class="ps-4">
                             <h6>Whatsapp Only!</h6>
-                            <h3 class="text-primary m-0">+{{ $data['aboutUs']['telepon'] }}</h3>
+                            <h3 class="text-primary m-0">
+                            @if ($data['aboutUs'])
+                                {{ $data['aboutUs']['telepon'] }}
+                            @endif</h3>
                         </div>
                     </div>
                 </div>
@@ -453,9 +470,20 @@
             <div class="row g-5">
                 <div class="col-lg-12 col-md-12">
                     <h4 class="text-light mb-4">Alamat</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{ $data['aboutUs']['alamat'] }}</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+{{ $data['aboutUs']['telepon'] }}</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ $data['aboutUs']['email'] }}</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>
+                    @if ($data['aboutUs'])
+                        {{ $data['aboutUs']['alamat'] }}
+                    @endif</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>
+                    @if ($data['aboutUs'])
+                        {{ $data['aboutUs']['telepon'] }}
+                    @endif
+                    </p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>
+                    @if ($data['aboutUs'])
+                        {{ $data['aboutUs']['email'] }}
+                    @endif
+                    </p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>

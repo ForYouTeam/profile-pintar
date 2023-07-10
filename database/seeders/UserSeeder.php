@@ -42,25 +42,24 @@ class UserSeeder extends Seeder
         $uuid2 = Uuid::uuid4()->toString();
 
         $user = User::create([
-            'id'         => crc32($uuid)        ,
-            'name'       => 'nazar'             ,
-            'username'   => 'admin'   ,
-            'password'   => Hash::make('123456'),
-            'scope'      => 'super-admin'       ,
-            'created_at' => Carbon::now()       ,
-            'updated_at' => Carbon::now()       ,
+            'id'         => crc32($uuid)               ,
+            'name'       => 'super admin'              ,
+            'username'   => 'suadmin'                  ,
+            'password'   => Hash::make('suadmin130032'),
+            'scope'      => 'super-admin'              ,
+            'created_at' => Carbon::now()              ,
+            'updated_at' => Carbon::now()              ,
         ]);
 
         $user->assignRole('super-admin');
 
         $user2 = User::create([
-            'id'         => crc32($uuid2)       ,
-            'name'       => 'lonte'             ,
-            'username'   => 'yulianti'          ,
-            'password'   => Hash::make('123456'),
-            'scope'      => 'admin'             ,
-            'created_at' => Carbon::now()       ,
-            'updated_at' => Carbon::now()       ,
+            'name'       => 'admin'                  ,
+            'username'   => 'admin'                  ,
+            'password'   => Hash::make('admin130032'),
+            'scope'      => 'admin'                  ,
+            'created_at' => Carbon::now()            ,
+            'updated_at' => Carbon::now()            ,
         ]);
 
         $user2->assignRole('admin');
