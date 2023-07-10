@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
         $user = User::create([
             'id'         => crc32($uuid)        ,
             'name'       => 'nazar'             ,
-            'username'   => 'admin@gmail.com'   ,
+            'username'   => 'admin'   ,
             'password'   => Hash::make('123456'),
             'scope'      => 'super-admin'       ,
             'created_at' => Carbon::now()       ,
