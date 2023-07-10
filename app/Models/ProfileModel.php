@@ -10,6 +10,6 @@ class ProfileModel extends Model
     use HasFactory;
     protected $table    = 'profile';
     protected $fillable = [
-        'id', 'visi', 'misi', 'deskripsi', 'created_at', 'updated_at'
+        'id', 'telepon', 'email', 'alamat', 'visi', 'misi', 'deskripsi', 'created_at', 'updated_at'
     ];
 }

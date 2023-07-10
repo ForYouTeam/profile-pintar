@@ -17,7 +17,7 @@ class KomentarRepository implements KomentarInterface
   public function getAllPayload(array $meta)
   {
     try {
-      $data = $this->komentarModel->orderBy('created_at', 'desc')->joinList()->get();
+      $data = $this->komentarModel->orderBy('created_at', 'desc')->joinList()->getByParams($meta)->get();
       
       $payloadList = array(
         "message" => "Berhasil mengambil data",

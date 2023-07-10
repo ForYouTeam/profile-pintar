@@ -31,4 +31,15 @@ class KomentarModel extends Model
                 'komentar.updated_at'  ,
             );
     }
+
+    public function scopegetByParams($query, $params)
+    {
+        if ($params['postingan_id']) {
+            return $query
+                ->where('postingan_id', $params['postingan_id']);
+        }
+        else {
+            return $query;
+        }
+    }
 }

@@ -31,6 +31,9 @@ class ProfileController extends Controller
         $id = $request->id | null;
 
         $payload = array(
+            "telepon"   => $request->telepon   ,
+            "email"     => $request->email     ,
+            "alamat"    => $request->alamat    ,
             "visi"      => $request->visi      ,
             "misi"      => $request->misi      ,
             "deskripsi" => $request->deskripsi ,

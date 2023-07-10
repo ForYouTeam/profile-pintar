@@ -26,6 +26,9 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
+            "telepon"   => "required | numeric",
+            "email"     => "required | email",
+            "alamat"    => "required",
             "visi"      => "required",
             "misi"      => "required",
             "deskripsi" => "required",
