@@ -249,7 +249,7 @@
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v2/anggota/`,
+                url        : `${baseUrl}/api/v2/anggota`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {

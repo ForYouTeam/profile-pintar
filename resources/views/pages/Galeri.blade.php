@@ -156,7 +156,7 @@
             let data = new FormData($('#formData')[0]);
 
             $.ajax({
-                url: `${baseUrl}/api/v2/galeri/`,
+                url: `${baseUrl}/api/v2/galeri`,
                 method: "POST",
                 data: data,
                 processData: false,

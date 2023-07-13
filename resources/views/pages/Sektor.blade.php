@@ -174,7 +174,7 @@
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v2/sektor/`,
+                url        : `${baseUrl}/api/v2/sektor`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {

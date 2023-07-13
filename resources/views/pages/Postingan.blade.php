@@ -207,7 +207,7 @@
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v2/postingan/`,
+                url        : `${baseUrl}/api/v2/postingan`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {

@@ -148,7 +148,7 @@
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v2/devisi/`,
+                url        : `${baseUrl}/api/v2/devisi`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {

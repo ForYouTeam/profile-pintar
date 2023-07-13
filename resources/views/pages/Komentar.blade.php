@@ -203,7 +203,7 @@
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v2/komentar/`,
+                url        : `${baseUrl}/api/v2/komentar`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {

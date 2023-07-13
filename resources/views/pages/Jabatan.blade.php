@@ -156,7 +156,7 @@
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v2/jabatan/`,
+                url        : `${baseUrl}/api/v2/jabatan`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {

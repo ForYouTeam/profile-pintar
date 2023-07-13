@@ -175,7 +175,7 @@
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v2/akun/`,
+                url        : `${baseUrl}/api/v2/akun`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {
