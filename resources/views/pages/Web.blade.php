@@ -57,6 +57,12 @@
             align-items: center;
             height: 90vh;
         }
+
+        #comment-input-box{
+            position: absolute;
+            bottom: 1%;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -231,7 +237,8 @@
                         </div>
                         <h4 class="mb-3">{{ $item['judul'] }}</h4>
                         <p>{{ $item['kontent'] }}.</p>
-                        <a class="btn-slide mt-2" role="button" id="comment" data-id="{{$item['id']}}" data-url="{{asset('storage/gambar')}}/{{$item['path']}}"><i class="fa fa-comment"></i><span>Komentar</span></a>
+                        <a class="btn-slide mt-2" role="button" id="comment" data-id="{{$item['id']}}" data-url="{{asset('storage/gambar')}}/{{$item['path']}}"
+                        data-collect="{{$item}}"><i class="fa fa-comment"></i><span>Komentar</span></a>
                     </div>
                 </div>
                 @endforeach
@@ -247,14 +254,14 @@
                         <div class="col-lg-8 my-container">
                             <img id="imgcomment" class="img-comment" src="" alt="">
                         </div>
-                        <div class="col-lg-4 p-3 mt-1 shadow">
-                            <h4>TITLE</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius cupiditate modi blanditiis, pariatur obcaecati quos ipsam ea incidunt. Voluptatem fuga pariatur, atque similique vitae minima ipsum dicta accusamus suscipit sit?</p>
+                        <div class="col-lg-4 p-3 mt-1 shadow" style="position: relative;">
+                            <h4 id="title-post">TITLE</h4>
+                            <p id="content-post">Lorem</p>
                             <hr>
                             <div id="komentarlist">
                             
                             </div>
-                            <div class="d-flex mt-5">
+                            <div id="comment-input-box" class="d-flex mt-5">
                                 <input id="postinganid" type="hidden">
                                 <input id="alias" required type="text" class="form-control float-start mt-2" placeholder="--Alias nama disini--" style="width: 40% !important">
                                 <input id="_komentar" required type="text" class="form-control float-start mt-2" placeholder="--Komentar disini--">
@@ -576,8 +583,12 @@
         
         $(document).on('click', '#comment', function()
         {
-            let dataId  = $(this).data('id' )
-            let imgpath = $(this).data('url')
+            let dataId  = $(this).data('id'      )
+            let imgpath = $(this).data('url'     )
+            let collect = $(this).data('collect' )
+
+            $('#title-post'  ).html(collect.judul  )
+            $('#content-post').html(collect.kontent)
 
             $('#postinganid' ).val(dataId)
             $('#alias'       ).val(''),
