@@ -41,10 +41,10 @@
             object-fit: cover !important;
         }
         #komentarlist{
-            max-height: 500px;
+            max-height: 600px;
             width: 100%;
             overflow-x: hidden;
-            overflow-y: scroll;
+            overflow-y: hidden;
         }
         .img-comment {
             max-width: 100%;
@@ -603,6 +603,32 @@
         {
             $('#postModal').modal('hide')
         })
+
+        window.addEventListener('DOMContentLoaded', function() {
+        let komentarList = document.getElementById('komentarlist');
+
+        window.addEventListener('resize', function() {
+            checkOverflow();
+        });
+
+        setInterval(function() {
+            checkOverflow();
+        }, 500); // Mengatur interval pengecekan tinggi elemen setiap 500 milidetik (setengah detik)
+
+        function checkOverflow() {
+            let scrollHeight = komentarList.scrollHeight;
+            let clientHeight = komentarList.clientHeight;
+
+            if (scrollHeight > clientHeight && clientHeight >= 600) {
+            komentarList.style.overflowY = 'scroll';
+            } else {
+            komentarList.style.overflowY = 'hidden';
+            }
+        }
+
+        // Memanggil fungsi checkOverflow() saat halaman dimuat
+        checkOverflow();
+        });
     </script>
 </body>
 
