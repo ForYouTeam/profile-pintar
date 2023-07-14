@@ -268,7 +268,7 @@
                             <div id="komentarlist" class="mb-5">
                             
                             </div>
-                            <div id="comment-input-box" class="d-flex">
+                            <div id="comment-input-box" class="d-flex mb-3">
                                 <input id="postinganid" type="hidden">
                                 <input id="alias" required type="text" class="form-control float-start mt-2" placeholder="--Alias nama disini--" style="width: 40% !important">
                                 <input id="_komentar" required type="text" class="form-control float-start mt-2" placeholder="--Komentar disini--">
