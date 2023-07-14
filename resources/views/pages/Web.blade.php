@@ -95,7 +95,7 @@
             </div>
             <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>
                 @if ($data['aboutUs'])
-                    {{ $data['aboutUs']['telepon'] }}
+                    <a href="http://wa.me/?text=Halo%20koperasi%20saya%20memiliki%20pertanyaan" target="_blank">{{ $data['aboutUs']['telepon'] }}</a>
                 @endif
             </h4>
         </div>
@@ -184,7 +184,7 @@
                             <h6>Hubungi Kami!</h6>
                             <h3 class="text-primary m-0">
                                 @if ($data['aboutUs'])
-                                    {{ $data['aboutUs']['telepon'] }}
+                                    <a href="http://wa.me/?text=Halo%20koperasi%20saya%20memiliki%20pertanyaan" target="_blank">{{ $data['aboutUs']['telepon'] }}</a>
                                 @endif    
                             </h3>
                         </div>
@@ -331,7 +331,7 @@
                             <h6>Whatsapp Only!</h6>
                             <h3 class="text-primary m-0">
                             @if ($data['aboutUs'])
-                                {{ $data['aboutUs']['telepon'] }}
+                                <a href="http://wa.me/?text=Halo%20koperasi%20saya%20memiliki%20pertanyaan" target="_blank">{{ $data['aboutUs']['telepon'] }}</a>
                             @endif</h3>
                         </div>
                     </div>
@@ -483,7 +483,7 @@
                     @endif</p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>
                     @if ($data['aboutUs'])
-                        {{ $data['aboutUs']['telepon'] }}
+                        <a href="http://wa.me/?text=Halo%20koperasi%20saya%20memiliki%20pertanyaan" target="_blank">{{ $data['aboutUs']['telepon'] }}</a>
                     @endif
                     </p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>
