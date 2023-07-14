@@ -265,10 +265,10 @@
                             <h4 id="title-post">TITLE</h4>
                             <p id="content-post">Lorem</p>
                             <hr>
-                            <div id="komentarlist">
+                            <div id="komentarlist" class="mb-5">
                             
                             </div>
-                            <div id="comment-input-box" class="d-flex mt-5 mb-2">
+                            <div id="comment-input-box" class="d-flex">
                                 <input id="postinganid" type="hidden">
                                 <input id="alias" required type="text" class="form-control float-start mt-2" placeholder="--Alias nama disini--" style="width: 40% !important">
                                 <input id="_komentar" required type="text" class="form-control float-start mt-2" placeholder="--Komentar disini--">
