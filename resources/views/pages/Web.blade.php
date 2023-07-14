@@ -58,6 +58,13 @@
             height: 90vh;
         }
 
+        @media screen and (max-width: 480px) {
+            .my-container {
+                height: fit-content !important;
+                width: auto !important;
+            }
+        }
+
         #comment-input-box{
             position: absolute;
             bottom: 1%;
@@ -261,7 +268,7 @@
                             <div id="komentarlist">
                             
                             </div>
-                            <div id="comment-input-box" class="d-flex mt-5">
+                            <div id="comment-input-box" class="d-flex mt-5 mb-2">
                                 <input id="postinganid" type="hidden">
                                 <input id="alias" required type="text" class="form-control float-start mt-2" placeholder="--Alias nama disini--" style="width: 40% !important">
                                 <input id="_komentar" required type="text" class="form-control float-start mt-2" placeholder="--Komentar disini--">
@@ -269,8 +276,8 @@
                             </div>
                         </div>
                     </div>
-                    <button id="closeModal" type="button" class="btn btn-secondary float-end mt-4 ms-5" data-dismiss="modal">Tutup</button>
                 </div>
+                <button id="closeModal" type="button" class="btn btn-secondary my-3 float-end" data-dismiss="modal">Tutup</button>
             </div>
           </div>
         </div>
@@ -520,7 +527,6 @@
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
